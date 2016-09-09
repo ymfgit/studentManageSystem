@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace:采用映射接口方式间接操作时,命名空间值:与映射接口的全限定名一致 -->
+<mapper namespace="com.yc.mybatis.mapper.ProfileMapper">
+	<select id="findAllProfile" resultType="Profile">
+		select * from profile
+	</select>
+	<select id="findProfileById" resultType="Profile">
+	    select * from profile where id=#{id}
+	</select>
+	<update id="updateProfile" parameterType="Profile">
+	    update profile 
+	    <set>
+	        <if test="name!=null">
+	            name=#{name},
+	        </if>
+	        <if test="birthday!=null">
+	            birthday=#{birthday},
+	        </if>
+	        <if test="gender!=null">
+	            gender=#{gender},
+	        </if>
+	        <if test="career!=null">
+	            career=#{career},
+	        </if>
+	        <if test="address!=null">
+	            address=#{address},
+	        </if>
+	        <if test="mobile!=null">
+	            mobile=#{mobile}
+	        </if>
+	        <if test="id!=0">
+	            where id=#{id}
+	        </if>
+	    </set>
+	    	
+	</update>
+	
+</mapper>
